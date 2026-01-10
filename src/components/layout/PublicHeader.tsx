@@ -133,23 +133,20 @@ export function PublicHeader({
     <header data-testid="public-header" className="bg-card/95 backdrop-blur-md border-b border-border/50 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo - Always render to prevent layout shift */}
           <Link href="/" data-testid="logo" className="flex items-center shrink-0">
             <div className="relative h-10 w-32 sm:h-12 sm:w-40">
-              {mounted && (
-                <Image
-                  key={theme}
-                  src={
-                    theme === "dark"
-                      ? "/logos/stepperslife-logo-dark.svg"
-                      : "/logos/stepperslife-logo-light.svg"
-                  }
-                  alt="SteppersLife"
-                  fill
-                  className="object-contain object-left"
-                  priority
-                />
-              )}
+              <Image
+                src={
+                  mounted && theme === "dark"
+                    ? "/logos/stepperslife-logo-dark.svg"
+                    : "/logos/stepperslife-logo-light.svg"
+                }
+                alt="SteppersLife"
+                fill
+                className="object-contain object-left"
+                priority
+              />
             </div>
           </Link>
 
@@ -175,22 +172,21 @@ export function PublicHeader({
 
           {/* Right Side Actions */}
           <div className="flex items-center gap-2">
-            {/* Theme Toggle */}
-            {mounted && (
-              <button
-                type="button"
-                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                className="p-2 rounded-full hover:bg-accent transition-colors"
-                title={theme === "dark" ? "Light mode" : "Dark mode"}
-                data-testid="theme-toggle"
-              >
-                {theme === "dark" ? (
-                  <Sun className="w-[18px] h-[18px] text-muted-foreground" />
-                ) : (
-                  <Moon className="w-[18px] h-[18px] text-muted-foreground" />
-                )}
-              </button>
-            )}
+            {/* Theme Toggle - Always render to prevent layout shift */}
+            <button
+              type="button"
+              onClick={() => mounted && setTheme(theme === "dark" ? "light" : "dark")}
+              className="p-2 rounded-full hover:bg-accent transition-colors"
+              title={mounted ? (theme === "dark" ? "Light mode" : "Dark mode") : "Toggle theme"}
+              data-testid="theme-toggle"
+              aria-label="Toggle theme"
+            >
+              {mounted && theme === "dark" ? (
+                <Sun className="w-[18px] h-[18px] text-muted-foreground" />
+              ) : (
+                <Moon className="w-[18px] h-[18px] text-muted-foreground" />
+              )}
+            </button>
 
             {isAuthenticated ? (
               <>
@@ -448,25 +444,24 @@ export function PublicHeader({
               ))}
 
             <div className="border-t border-border mt-3 pt-3">
-              {mounted && (
-                <button
-                  type="button"
-                  onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-foreground hover:bg-accent rounded-lg transition-colors"
-                >
-                  {theme === "dark" ? (
-                    <>
-                      <Sun className="w-4 h-4" />
-                      Light Mode
-                    </>
-                  ) : (
-                    <>
-                      <Moon className="w-4 h-4" />
-                      Dark Mode
-                    </>
-                  )}
-                </button>
-              )}
+              {/* Theme Toggle - Always render to prevent layout shift */}
+              <button
+                type="button"
+                onClick={() => mounted && setTheme(theme === "dark" ? "light" : "dark")}
+                className="w-full flex items-center gap-3 px-4 py-2.5 text-sm text-foreground hover:bg-accent rounded-lg transition-colors"
+              >
+                {mounted && theme === "dark" ? (
+                  <>
+                    <Sun className="w-4 h-4" />
+                    Light Mode
+                  </>
+                ) : (
+                  <>
+                    <Moon className="w-4 h-4" />
+                    Dark Mode
+                  </>
+                )}
+              </button>
 
               {isAuthenticated ? (
                 <>
