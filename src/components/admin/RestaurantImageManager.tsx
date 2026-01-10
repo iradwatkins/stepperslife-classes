@@ -275,8 +275,8 @@ export function RestaurantImageManager({
         const oldIndex = photos.findIndex((p) => p.storageId === active.id);
         const newIndex = photos.findIndex((p) => p.storageId === over.id);
 
-        const newOrder = arrayMove(photos, oldIndex, newIndex);
-        const photoOrder = newOrder.map((p) => p.storageId);
+        const newOrder = arrayMove(photos, oldIndex, newIndex) as FoodPhoto[];
+        const photoOrder = newOrder.map((p: FoodPhoto) => p.storageId);
 
         try {
           await reorderPhotos({
