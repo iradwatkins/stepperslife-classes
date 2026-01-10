@@ -1,5 +1,6 @@
 import { v } from "convex/values";
 import { query } from "./_generated/server";
+import { Doc } from "./_generated/dataModel";
 import { getCurrentUser } from "./lib/auth";
 
 // Get overall stats for all instructor's classes
@@ -22,7 +23,7 @@ export const getInstructorStats = query({
     const classIds = classes.map((c) => c._id);
 
     // Get all orders for these classes
-    const allOrders = [];
+    const allOrders: Doc<"orders">[] = [];
     for (const classId of classIds) {
       const orders = await ctx.db
         .query("orders")
@@ -94,7 +95,7 @@ export const getEnrollmentTrends = query({
     const classIds = classes.map((c) => c._id);
 
     // Get orders
-    const allOrders = [];
+    const allOrders: Doc<"orders">[] = [];
     for (const classId of classIds) {
       const orders = await ctx.db
         .query("orders")
@@ -283,7 +284,7 @@ export const getRevenueByMonth = query({
     const classIds = classes.map((c) => c._id);
 
     // Get orders
-    const allOrders = [];
+    const allOrders: Doc<"orders">[] = [];
     for (const classId of classIds) {
       const orders = await ctx.db
         .query("orders")

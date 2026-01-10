@@ -429,7 +429,7 @@ export default function ClassDetailClient({ classId, mockData }: ClassDetailClie
                 {/* Categories */}
                 {classDetails.categories && classDetails.categories.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-6" data-testid="class-categories">
-                    {classDetails.categories.map((category) => (
+                    {classDetails.categories.map((category: string) => (
                       <span
                         key={category}
                         className="inline-flex items-center gap-1 px-3 py-1 bg-accent text-accent-foreground rounded-full text-sm"
@@ -522,7 +522,7 @@ export default function ClassDetailClient({ classId, mockData }: ClassDetailClie
                         <div className="mb-4 pb-4 border-b border-border">
                           <p className="text-sm font-medium text-foreground mb-2">Enrollment Options:</p>
                           <div className="space-y-2">
-                            {classDetails.enrollmentTiers.slice(0, 3).map((tier) => (
+                            {classDetails.enrollmentTiers.slice(0, 3).map((tier: { _id: string; name: string; priceCents: number; isAvailable: boolean }) => (
                               <div
                                 key={tier._id}
                                 className="flex items-center justify-between text-sm"
