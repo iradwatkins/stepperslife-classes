@@ -889,7 +889,7 @@ export default function ClassesListClient({
                         className={`h-9 gap-1 ${selectedInstructor ? "border-primary text-primary" : ""}`}
                       >
                         <UserCircle className="w-3.5 h-3.5" />
-                        <span>{selectedInstructor ? instructors.find(i => i.slug === selectedInstructor)?.name.split(' ')[0] : "Instructor"}</span>
+                        <span>{selectedInstructor ? instructors.find((i: InstructorFilter) => i.slug === selectedInstructor)?.name.split(' ')[0] : "Instructor"}</span>
                         {selectedInstructor && (
                           <button
                             type="button"
