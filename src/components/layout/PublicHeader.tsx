@@ -64,8 +64,8 @@ export function PublicHeader({
   }, []);
 
   const navigationLinks = [
-    { href: "/events", label: "Events" },
-    { href: "/classes", label: "Classes" },
+    { href: "https://events.stepperslife.com", label: "Events" },
+    { href: "/", label: "Classes" },
     { href: "https://services.stepperslife.com", label: "Services" },
     { href: "https://stores.stepperslife.com", label: "Stores" },
     { href: "https://restaurants.stepperslife.com", label: "Restaurants" },
