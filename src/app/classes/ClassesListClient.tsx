@@ -45,6 +45,13 @@ function formatPrice(cents: number | null | undefined, showPerClass = true): str
   return showPerClass ? `${price}/class` : price;
 }
 
+// Instructor type for filter display
+type InstructorFilter = {
+  slug: string;
+  name: string;
+  verified?: boolean;
+};
+
 // Class types for filtering (only 3 main types)
 const CLASS_TYPES = ["Steppin", "Line Dancing", "Walking"];
 
@@ -655,7 +662,7 @@ export default function ClassesListClient({
                           Instructor
                         </label>
                         <div className="flex flex-wrap gap-2">
-                          {instructors.map((instructor) => (
+                          {instructors.map((instructor: InstructorFilter) => (
                             <button
                               key={instructor.slug}
                               type="button"
@@ -900,7 +907,7 @@ export default function ClassesListClient({
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-2" align="start">
                       <div className="flex flex-wrap gap-1.5 max-w-[300px]">
-                        {instructors.map((instructor) => (
+                        {instructors.map((instructor: InstructorFilter) => (
                           <button
                             key={instructor.slug}
                             type="button"
