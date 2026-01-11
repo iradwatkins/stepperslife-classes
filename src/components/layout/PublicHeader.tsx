@@ -134,7 +134,7 @@ export function PublicHeader({
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo - Always render to prevent layout shift */}
-          <Link href="/" data-testid="logo" className="flex items-center shrink-0">
+          <Link href="https://stepperslife.com" data-testid="logo" className="flex items-center shrink-0">
             <div className="relative h-10 w-32 sm:h-12 sm:w-40">
               <Image
                 src={
